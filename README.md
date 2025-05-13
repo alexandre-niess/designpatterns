@@ -6,6 +6,10 @@ Este projeto é uma aplicação web que demonstra a aplicação de diversos **De
 O sistema permite criar, decorar, notificar e gerenciar tarefas com foco didático em padrões **criacionais**, **estruturais** e **comportamentais**.
 
 ---
+   ## Alunos:
+- Alexandre Augusto Niess Ferreira
+- Arthur Martinho Medeiros Oliveira
+
 
 ## 🚀 Funcionalidades
 
