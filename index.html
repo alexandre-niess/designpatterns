@@ -121,6 +121,17 @@
               </button>
             </div>
           </div>
+          <!-- Importação de tarefa externa (Adapter) -->
+          <div class="card mt-4">
+            <div class="card-header bg-secondary text-white">
+              <h3>Importar Tarefa Externa <small>(Adapter)</small></h3>
+            </div>
+            <div class="card-body">
+              <button id="import-external-task" class="btn btn-secondary w-100">
+                Importar da API (simulado)
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Painel central - Lista de tarefas -->
@@ -130,6 +141,13 @@
               <h3>Tarefas</h3>
             </div>
             <div class="card-body">
+              <!-- Botão de desfazer (Command) -->
+              <div class="d-grid mb-2">
+                <button id="undo-action" class="btn btn-outline-danger">
+                  Desfazer Última Ação
+                </button>
+              </div>
+
               <div id="tasks-container" class="list-group">
                 <!-- As tarefas serão adicionadas aqui dinamicamente -->
                 <div class="list-group-item text-center text-muted">
@@ -222,6 +240,25 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Logger (Singleton) -->
+        <div class="card mt-4">
+          <div class="card-header bg-dark text-white">
+            <h3>Logger <small>(Singleton)</small></h3>
+          </div>
+          <div class="card-body">
+            <button id="show-logs" class="btn btn-outline-light w-100 mb-2">
+              Exibir Logs
+            </button>
+            <pre
+              id="log-output"
+              class="bg-light text-dark p-2 rounded"
+              style="height: 150px; overflow-y: auto"
+            >
+      <!-- Logs aparecerão aqui -->
+    </pre>
           </div>
         </div>
       </div>

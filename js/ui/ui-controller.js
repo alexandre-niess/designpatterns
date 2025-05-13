@@ -8,6 +8,7 @@ class UIController {
     this.taskFactory = new TaskFactory();
     this.taskSubject = new TaskSubject();
     this.notifications = [];
+    this.commandHistory = [];
 
     // Inicializar observadores
     this.initObservers();
@@ -99,6 +100,10 @@ class UIController {
 
     // Usar o Factory Method para criar a tarefa
     const task = this.taskFactory.createTask(taskType, title, description);
+    const command = new AddTaskCommand(this, task);
+    command.execute();
+    this.commandHistory.push(command);
+
     this.tasks.push(task);
 
     // Atualizar a interface
@@ -242,5 +247,30 @@ class UIController {
   // Encontrar uma tarefa pelo ID
   findTaskById(id) {
     return this.tasks.find((task) => task.getId() === id);
+  }
+
+  loadExternalTasks() {
+    const externalTask = {
+      name: "API - Atualizar sistema",
+      details: "Vindo de um sistema externo",
+      category: "work",
+    };
+
+    const adapter = new ExternalTaskAdapter(externalTask);
+    const data = adapter.toInternalTask();
+    const task = this.taskFactory.createTask(
+      data.type,
+      data.title,
+      data.description
+    );
+    this.tasks.push(task);
+    this.renderTasks();
+  }
+
+  undoLastCommand() {
+    const command = this.commandHistory.pop();
+    if (command) {
+      command.undo();
+    }
   }
 }
